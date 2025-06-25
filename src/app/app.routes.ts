@@ -9,9 +9,8 @@ import { AdminRoleGuard } from './guards/admin-role.guard';
 import { GuestGuard } from './guards/guest.guard';
 import { IRoleType } from './interfaces';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { OrdersComponent } from './pages/orders/orders.component';
-import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
-import { SportTeamComponent } from './pages/sport-team/sport-team.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 export const routes: Routes = [
   {
@@ -70,44 +69,29 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'orders',
-        component: OrdersComponent,
+        path: 'products',
+        component: ProductsComponent,
         data: {
           authorities: [
-            IRoleType.admin,
             IRoleType.superAdmin,
             IRoleType.user,
           ],
-          name: 'orders',
+          name: 'Products',
           showInSidebar: true
         }
       },
       {
-        path: 'preference-list',
-        component: PreferenceListPageComponent,
+        path: 'categories',
+        component: CategoriesComponent,
         data: {
           authorities: [
-            IRoleType.admin,
             IRoleType.superAdmin,
             IRoleType.user,
           ],
-          name: 'preference list',
+          name: 'Categories',
           showInSidebar: true
         }
-      },
-      {
-        path: 'sport-team',
-        component: SportTeamComponent,
-        data: {
-          authorities: [
-            IRoleType.admin,
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'Sport Team',
-          showInSidebar: true
-        }
-      },
+      }
     ],
   },
 ];

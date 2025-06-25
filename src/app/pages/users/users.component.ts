@@ -26,6 +26,7 @@ export class UsersComponent {
   public userService: UserService = inject(UserService);
   public modalService: ModalService = inject(ModalService);
   @ViewChild('addUsersModal') public addUsersModal: any;
+  public title: string = 'Users';
   public fb: FormBuilder = inject(FormBuilder);
   userForm = this.fb.group({
     id: [''],
@@ -59,5 +60,5 @@ export class UsersComponent {
     this.userService.update(user);
     this.modalService.closeAll();
   }
-  
+
 }

@@ -1,18 +1,17 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { BaseService } from './base-service';
-import { IResponse, ISearch, ISportTeam } from '../interfaces';
+import { ICategory, IProduct, IResponse, ISearch } from '../interfaces';
 import { AlertService } from './alert.service';
-
 @Injectable({
   providedIn: 'root'
 })
-export class TeamService extends BaseService<ISportTeam> {
-  protected override source: string = 'teams';
-  private teamListSignal = signal<ISportTeam[]>([]);
-  get teams$() {
-    return this.teamListSignal;
+export class ProductsService extends BaseService<ICategory> {
+  protected override source: string = 'products';
+  private productListSignal = signal<ICategory[]>([]);
+  get products$() {
+    return this.productListSignal;
   }
-  public search: ISearch = { 
+  public search: ISearch = {
     page: 1,
     size: 5
   }
@@ -20,12 +19,12 @@ export class TeamService extends BaseService<ISportTeam> {
   public totalItems: any = [];
   private alertService: AlertService = inject(AlertService);
 
-  getAll () {
+  getAll() {
     this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
-      next: (response: IResponse<ISportTeam[]>) => {
+      next: (response: any) => {
         this.search = { ...this.search, ...response.meta };
         this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
-        this.teamListSignal.set(response.data);
+        this.productListSignal.set(response.data);
       },
       error: (err: any) => {
         console.error('error', err);
@@ -33,9 +32,9 @@ export class TeamService extends BaseService<ISportTeam> {
     });
   }
 
-  save(item: ISportTeam) {
-    this.add(item).subscribe({
-      next: (response: IResponse<ISportTeam>) => {
+  save(product: IProduct) {
+    this.add(product).subscribe({
+      next: (response: IResponse<ICategory>) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },
@@ -46,9 +45,9 @@ export class TeamService extends BaseService<ISportTeam> {
     });
   }
 
-  update(item: ISportTeam) {
-    this.edit(item.id, item).subscribe({
-      next: (response: IResponse<ISportTeam>) => {
+  update(product: IProduct) {
+    this.edit(product.id, product).subscribe({
+      next: (response: IResponse<ICategory>) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },
@@ -59,9 +58,9 @@ export class TeamService extends BaseService<ISportTeam> {
     });
   }
 
-  delete(item: ISportTeam) {
-    this.del(item.id).subscribe({
-      next: (response: IResponse<ISportTeam>) => {
+  delete(product: IProduct) {
+    this.del(product.id).subscribe({
+      next: (response: IResponse<ICategory>) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },
@@ -71,6 +70,4 @@ export class TeamService extends BaseService<ISportTeam> {
       }
     });
   }
-  
-
 }

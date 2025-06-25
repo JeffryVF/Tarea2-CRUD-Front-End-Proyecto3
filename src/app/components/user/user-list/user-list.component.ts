@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from '../../modal/modal.component';
 import { UserFormComponent } from '../user-from/user-form.component';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,7 +18,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
   styleUrl: './user-list.component.scss'
 })
 export class UserListComponent {
-  @Input() title: string  = '';
+  @Input() title: string = '';
   @Input() users: IUser[] = [];
   @Output() callModalAction: EventEmitter<IUser> = new EventEmitter<IUser>();
   @Output() callDeleteAction: EventEmitter<IUser> = new EventEmitter<IUser>();

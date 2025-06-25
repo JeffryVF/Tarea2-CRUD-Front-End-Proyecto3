@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './modal.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ModalComponent{
+export class ModalComponent {
   @Input() title?: string;
   @Input() confirmAction: string = '';
   @Input() cancelAction: string = '';
@@ -34,7 +34,7 @@ export class ModalComponent{
   public modalService: NgbModal = inject(NgbModal)
 
   public hide() {
-   this.modalService.dismissAll();
+    this.modalService.dismissAll();
   }
 
   public hideModal() {

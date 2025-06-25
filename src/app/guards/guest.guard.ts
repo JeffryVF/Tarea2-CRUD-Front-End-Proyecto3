@@ -8,6 +8,6 @@ export const GuestGuard: CanActivateFn = (route, state) => {
 
   if (!authService.check()) return true;
 
-  router.navigateByUrl('/app');
+  router.navigateByUrl('/app/categories');
   return false;
 };

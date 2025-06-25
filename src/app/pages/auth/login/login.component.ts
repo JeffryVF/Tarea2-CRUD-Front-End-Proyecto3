@@ -22,9 +22,9 @@ export class LoginComponent {
   };
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
 
   public handleLogin(event: Event) {
     event.preventDefault();
@@ -36,7 +36,7 @@ export class LoginComponent {
     }
     if (this.emailModel.valid && this.passwordModel.valid) {
       this.authService.login(this.loginForm).subscribe({
-        next: () => this.router.navigateByUrl('/app/dashboard'),
+        next: () => this.router.navigateByUrl('/app/categories'),
         error: (err: any) => (this.loginError = err.error.description),
       });
     }

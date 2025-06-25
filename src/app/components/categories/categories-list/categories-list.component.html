@@ -1,0 +1,43 @@
+<div class="table-container table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                @if(areActionsAvailable) {
+                <th scope="col">#</th>
+                }
+                <th scope="col">Name</th>
+                <th class="text-center" scope="col">Description</th>
+                @if(areActionsAvailable) {
+                <th class="text-center" scope="col">Actions</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of categoryList; track item.id) {
+            <tr class="text-center">
+                @if (areActionsAvailable) {
+                <td scope="row">{{item.id}}</td>
+                }
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                @if(areActionsAvailable) {
+                <td>
+                    <button (click)="callModalAction.emit(item);" class="btn btn-warning me-2" type="button"><i
+                            class="fas fa-pen"></i></button>
+                    <button (click)="callDeleteAction.emit(item)" class="btn btn-danger" type="button"><i
+                            class="fas fa-trash"></i></button>
+                </td>
+                }
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="7">
+                    <div class="d-flex justify-content-center align-items-center w-100">
+                        <p class="mb-0">There are not categories</p>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
