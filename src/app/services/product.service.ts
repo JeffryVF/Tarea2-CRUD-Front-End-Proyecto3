@@ -1,15 +1,15 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { BaseService } from './base-service';
-import { ICategory, IProduct, IResponse, ISearch } from '../interfaces';
+import { IProduct, IResponse, ISearch } from '../interfaces';
 import { AlertService } from './alert.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService extends BaseService<ICategory> {
+export class ProductService extends BaseService<IProduct> {
   protected override source: string = 'products';
-  private productListSignal = signal<ICategory[]>([]);
+  private productSignal = signal<IProduct[]>([]);
   get products$() {
-    return this.productListSignal;
+    return this.productSignal;
   }
   public search: ISearch = {
     page: 1,
@@ -24,7 +24,7 @@ export class ProductsService extends BaseService<ICategory> {
       next: (response: any) => {
         this.search = { ...this.search, ...response.meta };
         this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
-        this.productListSignal.set(response.data);
+        this.productSignal.set(response.data);
       },
       error: (err: any) => {
         console.error('error', err);
@@ -34,7 +34,7 @@ export class ProductsService extends BaseService<ICategory> {
 
   save(product: IProduct) {
     this.add(product).subscribe({
-      next: (response: IResponse<ICategory>) => {
+      next: (response: IResponse<IProduct>) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },
@@ -47,7 +47,7 @@ export class ProductsService extends BaseService<ICategory> {
 
   update(product: IProduct) {
     this.edit(product.id, product).subscribe({
-      next: (response: IResponse<ICategory>) => {
+      next: (response: IResponse<IProduct>) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },
@@ -60,7 +60,7 @@ export class ProductsService extends BaseService<ICategory> {
 
   delete(product: IProduct) {
     this.del(product.id).subscribe({
-      next: (response: IResponse<ICategory>) => {
+      next: (response: IResponse<IProduct>) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },

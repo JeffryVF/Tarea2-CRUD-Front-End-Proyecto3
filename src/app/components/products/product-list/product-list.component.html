@@ -1,1 +1,49 @@
-<p>product-list works!</p>
+<div class="table-container table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                @if(areActionsAvailable) {
+                <th scope="col">ID</th>
+                }
+                <th scope="col">Name</th>
+                <th class="text-center" scope="col">Description</th>
+                <th class="text-center" scope="col">Price</th>
+                <th class="text-center" scope="col">Stock</th>
+                <th class="text-center" scope="col">Category</th>
+                @if(areActionsAvailable) {
+                <th class="text-center" scope="col">Actions</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of productsList; track item.id) {
+            <tr class="text-center">
+                @if (areActionsAvailable) {
+                <td scope="row">{{item.id}}</td>
+                }
+                <td class="col-2">{{item.name}}</td>
+                <td class="col-5">{{item.description}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.stock}}</td>
+                <td>{{item.category?.name}}</td>
+                @if(areActionsAvailable) {
+                <td>
+                    <button (click)="callModalAction.emit(item);" class="btn btn-warning me-2" type="button"><i
+                            class="fas fa-pen"></i></button>
+                    <button (click)="callDeleteAction.emit(item)" class="btn btn-danger" type="button"><i
+                            class="fas fa-trash"></i></button>
+                </td>
+                }
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="7">
+                    <div class="d-flex justify-content-center align-items-center w-100">
+                        <p class="mb-0">There are not products</p>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

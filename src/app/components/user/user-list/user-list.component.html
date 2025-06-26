@@ -1,7 +1,7 @@
 <div class="table-container table-responsive">
   <table class="table table-striped">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Lastname</th>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       @for (item of users; track item.id) {
-      <tr>
+      <tr class="text-center">
         <th scope="row">{{item.id}}</th>
         <td>{{item.name}}</td>
         <td>{{item.lastname}}</td>
@@ -23,8 +23,8 @@
         <td>
           <button (click)="callModalAction.emit(item);" class="btn btn-warning me-2" type="button"><i
               class="fas fa-pen"></i></button>
-          <button (click)="callDeleteAction.emit(item)" class="btn btn-danger" type="button"><i
-              class="fas fa-trash"></i></button>
+          <button (click)="callDeleteAction.emit(item)" [disabled]="(item.id == idUser)" class="btn btn-danger"
+            type="button"><i class="fas fa-trash"></i></button>
         </td>
       </tr>
       } @empty {

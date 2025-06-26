@@ -3,14 +3,14 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ICategory } from '../../../interfaces';
 @Component({
-  selector: 'app-categories-form',
+  selector: 'app-category-form',
   standalone: true,
   imports: [ReactiveFormsModule,
     CommonModule],
-  templateUrl: './categories-form.component.html',
-  styleUrl: './categories-form.component.scss'
+  templateUrl: './category-form.component.html',
+  styleUrl: './category-form.component.scss'
 })
-export class CategoriesFormComponent {
+export class CategoryFormComponent {
   public fb: FormBuilder = inject(FormBuilder);
   @Input() form!: FormGroup;
   @Output() callSaveMethod: EventEmitter<ICategory> = new EventEmitter<ICategory>();

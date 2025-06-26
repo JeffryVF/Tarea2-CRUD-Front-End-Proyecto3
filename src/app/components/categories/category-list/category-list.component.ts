@@ -5,15 +5,15 @@ import { AuthService } from "../../../services/auth.service";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-categories-list',
+  selector: 'app-category-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './categories-list.component.html',
-  styleUrl: './categories-list.component.scss'
+  templateUrl: './category-list.component.html',
+  styleUrl: './category-list.component.scss'
 })
-export class CategoriesListComponent {
+export class CategoryListComponent {
   @Input() title: string = '';
-  @Input() categoryList: ICategory[] = [];
+  @Input() categoriesList: ICategory[] = [];
   @Output() callModalAction: EventEmitter<ICategory> = new EventEmitter<ICategory>();
   @Output() callDeleteAction: EventEmitter<ICategory> = new EventEmitter<ICategory>();
   public authService: AuthService = inject(AuthService);

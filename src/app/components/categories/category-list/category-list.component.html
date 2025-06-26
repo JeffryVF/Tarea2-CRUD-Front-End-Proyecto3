@@ -3,7 +3,7 @@
         <thead>
             <tr class="text-center">
                 @if(areActionsAvailable) {
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 }
                 <th scope="col">Name</th>
                 <th class="text-center" scope="col">Description</th>
@@ -13,13 +13,13 @@
             </tr>
         </thead>
         <tbody>
-            @for (item of categoryList; track item.id) {
+            @for (item of categoriesList; track item.id) {
             <tr class="text-center">
                 @if (areActionsAvailable) {
                 <td scope="row">{{item.id}}</td>
                 }
                 <td>{{item.name}}</td>
-                <td>{{item.description}}</td>
+                <td class="col-6">{{item.description}}</td>
                 @if(areActionsAvailable) {
                 <td>
                     <button (click)="callModalAction.emit(item);" class="btn btn-warning me-2" type="button"><i

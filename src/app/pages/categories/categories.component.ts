@@ -6,11 +6,11 @@ import { ModalComponent } from "../../components/modal/modal.component";
 import { ModalService } from "../../services/modal.service";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ICategory } from '../../interfaces';
-import { CategoriesListComponent } from '../../components/categories/categories-list/categories-list.component';
 import { CategoriesService } from '../../services/categories.service';
-import { CategoriesFormComponent } from "../../components/categories/categories-form/categories-form.component";
 import { AuthService } from "../../services/auth.service";
 import { ActivatedRoute } from "@angular/router";
+import { CategoryListComponent } from "../../components/categories/category-list/category-list.component";
+import { CategoryFormComponent } from "../../components/categories/category-form/category-form.component";
 
 @Component({
   selector: 'app-categories',
@@ -20,8 +20,8 @@ import { ActivatedRoute } from "@angular/router";
     LoaderComponent,
     PaginationComponent,
     ModalComponent,
-    CategoriesListComponent,
-    CategoriesFormComponent
+    CategoryListComponent,
+    CategoryFormComponent
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'

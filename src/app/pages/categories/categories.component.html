@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-12">
-        <app-categories-list [categoryList]="categoriesService.categories$()" (callModalAction)="callEdition($event)"
+        <app-category-list [categoriesList]="categoriesService.categories$()" (callModalAction)="callEdition($event)"
             (callDeleteAction)="deleteCategory($event)" />
     </div>
     @if(categoriesService.categories$().length) {
@@ -23,9 +23,9 @@
 <ng-template #addCategoriesModal>
     <app-modal [hideFooter]="true">
         <div>
-            <app-categories-form [form]="categoriesForm" (callSaveMethod)="saveCategory($event)"
+            <app-category-form [form]="categoriesForm" (callSaveMethod)="saveCategory($event)"
                 (callUpdateMethod)="updateCategory($event)">
-            </app-categories-form>
+            </app-category-form>
         </div>
     </app-modal>
 </ng-template>

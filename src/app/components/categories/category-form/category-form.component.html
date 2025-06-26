@@ -1,15 +1,15 @@
 <form [formGroup]="form" class="row">
     <div>
-        <h2 class="mb-0">Add PreferenceList</h2>
+        <h2 class="mb-0">Add Category</h2>
     </div>
     <div class="mb-2">
-        <label class="mb-1" for="name">Name*</label>
+        <label class="mb-1 mt-3" for="name">Name*</label>
         <input id="name" formControlName="name" type="text" class="form-control">
         @if (form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)) {
         <p class="text-danger my-1">Name is required</p>
         }
-        <label class="mb-1" for="description">Description*</label>
-        <input id="description" formControlName="description" type="text" class="form-control">
+        <label class="mb-1 mt-3" for="description">Description*</label>
+        <textarea id="description" formControlName="description" type="text" class="form-control"></textarea>
         @if (form.controls['description'].invalid && (form.controls['description'].dirty ||
         form.controls['description'].touched)) {
         <p class="text-danger my-1">Description is required</p>
