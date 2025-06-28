@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { IUser, IFeedbackStatus } from '../../../interfaces';
+import { IUser } from '../../../interfaces';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
 

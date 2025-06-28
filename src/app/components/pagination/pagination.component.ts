@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -13,11 +12,11 @@ export class PaginationComponent {
   @Output() callCustomPaginationMethod = new EventEmitter();
   @Input() customCall: boolean = false;
   onPage(pPage: number) {
-		this.service.search.page = pPage;
+    this.service.search.page = pPage;
     if (this.customCall) {
       this.callCustomPaginationMethod.emit();
     } else {
       this.service.getAll();
     }
-	}
+  }
 }
